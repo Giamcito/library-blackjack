@@ -17,8 +17,7 @@ services:
       - algoritmos-service
 
   algoritmos-service:
-    # Si tienes el Dockerfile del backend en otra carpeta, ajusta 'build:' a esa ruta.
-    # Aquí asumimos que ya tienes una imagen publicada o local llamada 'paginacion-algoritmos-service'.
+    build: ./algoritmos-service
     image: paginacion-algoritmos-service
     container_name: paginacion-algoritmos-service
     ports:

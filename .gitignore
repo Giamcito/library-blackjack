@@ -31,3 +31,8 @@ docker-data/
 .vscode/
 .idea/
 *.swp
+
+# Java / Spring (algoritmos-service)
+algoritmos-service/target/
+algoritmos-service/.gradle/
+algoritmos-service/build/
