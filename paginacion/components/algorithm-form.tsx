@@ -23,11 +23,15 @@ export default function AlgorithmForm({ onSubmit, loading }: AlgorithmFormProps)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!referencias.trim()) {
+    const cleanRefs = referencias.replace(/\s+/g, "")
+    if (!cleanRefs) {
       alert("Por favor ingresa la cadena de referencias")
       return
     }
-
+    if (!/^\d+$/.test(cleanRefs)) {
+      alert("La cadena de referencias solo puede contener dígitos (0-9)")
+      return
+    }
     if (isNaN(Number(marcos)) || Number(marcos) < 1) {
       alert("El número de marcos debe ser mayor a 0")
       return
@@ -55,7 +59,7 @@ export default function AlgorithmForm({ onSubmit, loading }: AlgorithmFormProps)
           rows={4}
           disabled={loading}
         />
-        <p className="text-xs text-muted-foreground">Ingresa números separados por espacios o sin separar</p>
+  <p className="text-xs text-muted-foreground">Sólo dígitos (0-9). Puedes separar con espacios.</p>
       </div>
 
       <div className="space-y-2">
