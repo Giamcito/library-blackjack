@@ -1,7 +1,9 @@
 version: '3.9'
 services:
   frontend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: paginacion-frontend
     container_name: paginacion-frontend
     ports:
@@ -17,8 +19,9 @@ services:
       - algoritmos-service
 
   algoritmos-service:
-    build: ./algoritmos-service
-    image: paginacion-algoritmos-service
+    build:
+      context: ./algoritmos-service
+      dockerfile: Dockerfile
     container_name: paginacion-algoritmos-service
     ports:
       - "8081:8081"
