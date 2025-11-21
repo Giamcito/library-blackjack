@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+  frontend:
+    build: .
+    image: paginacion-frontend
+    container_name: paginacion-frontend
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "3002:3002"
+    # Script interno elegirá primer puerto libre de FRONTEND_PORTS
+    environment:
+      LOCAL_ALGOS: "false"
+      MICROSERVICE_URL: "http://algoritmos-service:8081/api/algoritmos/pagereplacement"
+      FRONTEND_PORTS: "3000,3001,3002"
+    depends_on:
+      - algoritmos-service
+
+  algoritmos-service:
+    # Si tienes el Dockerfile del backend en otra carpeta, ajusta 'build:' a esa ruta.
+    # Aquí asumimos que ya tienes una imagen publicada o local llamada 'paginacion-algoritmos-service'.
+    image: paginacion-algoritmos-service
+    container_name: paginacion-algoritmos-service
+    ports:
+      - "8081:8081"
+    # Añade variables de entorno del backend si las requiere.
+    environment:
+      SPRING_PROFILES_ACTIVE: "default"
+
+networks:
+  default:
+    name: paginacion-net

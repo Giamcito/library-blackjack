@@ -1,0 +1,33 @@
+# Node / Next.js
+node_modules/
+.next/
+out/
+dist/
+
+# Environment files
+.env
+.env.*
+
+# Debug logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Docker local data
+docker-data/
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
