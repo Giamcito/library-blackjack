@@ -1,4 +1,18 @@
-# Paginación & Algoritmos de Reemplazo
+# library-blackjack & Paginación de Memoria
+
+Este repositorio combina:
+
+1. Una librería en C para conteo de cartas (Blackjack).
+2. Una aplicación Next.js que simula algoritmos de reemplazo de páginas (FIFO, LRU, Óptimo) con ejecución local o remota vía microservicio Java.
+
+---
+
+## Librería Blackjack (C)
+Librería hecha en C para conteo de cartas (origen: rama `paginacion` remota previa). Se mantiene la historia original y se añade ahora la parte de simulación de memoria virtual.
+
+---
+
+## Paginación & Algoritmos de Reemplazo (Next.js)
 
 Aplicación Next.js que simula los algoritmos FIFO, LRU y Óptimo de reemplazo de páginas. Puede ejecutarse con implementación local en TypeScript o delegando el cálculo a un microservicio Java (Spring Boot) vía Docker. Incluye mecanismos de resiliencia (fallback local) y selección dinámica de puertos para evitar colisiones en entornos compartidos.
 
@@ -80,3 +94,4 @@ El botón en la página principal abre la aplicación de Blackjack educativo en 
 - Métricas (hit rate) similares a backend Java.
 - Parametrizar lista de puertos backend vía variable en lugar de array fija.
 - Pipeline CI para build + tests.
+
