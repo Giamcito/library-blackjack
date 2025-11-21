@@ -1,8 +1,10 @@
 # Multi-stage build for Next.js app
 FROM node:20-bookworm-slim AS builder
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-RUN corepack enable && pnpm install --frozen-lockfile --shamefully-hoist
+COPY package.json ./
+# Copia lockfile si existe (evita fallo si fue omitido)
+COPY pnpm-lock.yaml* ./
+RUN corepack enable && if [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile --shamefully-hoist; else echo 'pnpm-lock.yaml ausente, instalando sin --frozen-lockfile'; pnpm install --shamefully-hoist; fi
 RUN ls -ld node_modules/next || (echo 'next package missing after install' && exit 1)
 RUN ls node_modules/next/dist/bin || (echo 'next dist/bin missing' && exit 1)
 COPY . .
